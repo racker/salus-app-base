@@ -25,6 +25,7 @@
   <groupId>com.rackspace.salus</groupId>
   <artifactId>salus-app-base</artifactId>
   <version>0.1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
