@@ -4,6 +4,9 @@ podTemplate(label: label, containers: [
   containerTemplate(name: 'maven', image: 'maven:3-jdk-8', ttyEnabled: true, command: 'cat')
   ])
 {
+    environment {
+        GOOGLE_APPLICATION_CREDENTIALS = credentials('monplat-jenkins')
+    }
     node(label) {
         container('maven') {
             stage('Checkout') {
@@ -16,6 +19,9 @@ podTemplate(label: label, containers: [
                 }
                 stage('Integration Test') {
                   sh 'mvn integration-test'
+                }
+                stage('Deploy snapshot') {
+                  sh 'mvn archetype:generate -DgroupId=com.test.apps -DartifactId=GoogleWagonTest -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false'
                 }
             }
         }

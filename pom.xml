@@ -131,7 +131,7 @@
   <distributionManagement>
     <snapshotRepository>
         <id>salus-snapshot-bucket</id>
-        <url>gs://artifacts.monplat-jenkins.appspot.com/snapshot</url>
+        <url>gs://monplat-jenkins-artifacts/snapshot</url>
     </snapshotRepository>
     <repository>
       <id>bintray-racker-maven</id>
