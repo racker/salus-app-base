@@ -21,7 +21,7 @@ podTemplate(label: label, containers: [
                   sh 'mvn integration-test'
                 }
                 stage('Deploy snapshot') {
-                  sh 'mvn archetype:generate -DgroupId=com.test.apps -DartifactId=GoogleWagonTest -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false'
+                  sh 'mvn deploy'
                 }
             }
         }
