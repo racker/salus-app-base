@@ -5,7 +5,7 @@ podTemplate(label: label, containers: [
   ])
 {
     environment {
-        GOOGLE_APPLICATION_CREDENTIALS = credentials('monplat-jenkins-json')
+        GOOGLE_APPLICATION_FILE = credentials('monplat-jenkins-json')
     }
     node(label) {
         container('maven') {
@@ -15,6 +15,7 @@ podTemplate(label: label, containers: [
             ansiColor('xterm') {
                 // TODO Add persistentVolumeClaim to greatly speed this up
                 stage('Maven install') {
+                  sh 'export GOOGLE_APPLICATION_CREDENTIALS=$GOOGLE_APPLICATION_FILE'
                   sh 'mvn install -Dmaven.test.skip=true'
                 }
                 stage('Integration Test') {
