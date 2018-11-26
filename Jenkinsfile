@@ -5,7 +5,7 @@ podTemplate(label: label, containers: [
   ])
 {
     environment {
-        GOOGLE_APPLICATION_CREDENTIALS = credentials('monplat-jenkins')
+        GOOGLE_APPLICATION_CREDENTIALS = credentials('monplat-jenkins-json')
     }
     node(label) {
         container('maven') {
