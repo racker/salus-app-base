@@ -4,11 +4,11 @@ podTemplate(label: label, containers: [
   containerTemplate(name: 'maven', image: 'maven:3-jdk-8', ttyEnabled: true, command: 'cat')
   ])
 {
-    environment {
-        GOOGLE_APPLICATION_FILE = credentials('monplat-jenkins-json')
-    }
     node(label) {
         container('maven') {
+            environment {
+                GOOGLE_APPLICATION_FILE = credentials('monplat-jenkins-json')
+            }
             stage('Checkout') {
                 checkout scm
             }
