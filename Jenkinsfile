@@ -19,7 +19,7 @@ podTemplate(label: label, containers: [
                 }
                 stage('Deploy snapshot') {
                   environment {
-                      GOOGLE_APPLICATION_FILE = credentials('monplat-jenkins-json')
+                      GOOGLE_APPLICATION_FILE = credentials('monplat-jenkins-7f0eaa46ecdc.json')
                   }
                   sh 'export GOOGLE_APPLICATION_CREDENTIALS=$GOOGLE_APPLICATION_FILE'
                   sh 'mvn deploy'
