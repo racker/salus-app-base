@@ -17,6 +17,11 @@ podTemplate(label: label, containers: [
                 stage('Integration Test') {
                   sh 'mvn integration-test'
                 }
+                stage('Deploy snapshot') {
+                    withCredentials([file(credentialsId: 'monplat-jenkins-json', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
+                        sh 'mvn deploy'
+                    }
+                }
             }
         }
     }
