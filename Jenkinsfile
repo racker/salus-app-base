@@ -8,9 +8,9 @@ podTemplate(label: label, containers: [
         container('maven') {
             stage('Checkout') {
                 checkout scm
+                googleStorageDownload bucketUri: 'gs://monplat-jenkins-artifacts/settings.xml', credentialsId: 'monplat-jenkins', localDirectory: './mvn/'
             }
             ansiColor('xterm') {
-                // TODO Add persistentVolumeClaim to greatly speed this up
                 stage('Maven install') {
                   sh 'mvn install -Dmaven.test.skip=true -s .mvn/settings.xml'
                 }
@@ -18,9 +18,7 @@ podTemplate(label: label, containers: [
                   sh 'mvn integration-test'
                 }
                 stage('Deploy snapshot') {
-                    withCredentials([file(credentialsId: 'monplat-jenkins-json', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
                         sh 'mvn deploy -s .mvn/settings.xml'
-                    }
                 }
             }
         }
