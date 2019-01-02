@@ -3,13 +3,13 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <servers>
     <server>
-      <username>admin</username>
-      <password>APGGbWnaApJkRBQucUanGNs59S</password>
+      <username>vulcan</username>
+      <password>AP5z8NECkRQmVHrYbgmgkEX1Vbg</password>
       <id>central</id>
     </server>
     <server>
-      <username>admin</username>
-      <password>APGGbWnaApJkRBQucUanGNs59S</password>
+      <username>vulcan</username>
+      <password>AP5z8NECkRQmVHrYbgmgkEX1Vbg</password>
       <id>snapshots</id>
     </server>
   </servers>
