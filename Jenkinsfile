@@ -8,7 +8,7 @@ podTemplate(label: label, containers: [
         container('maven') {
             stage('Checkout') {
                 checkout scm
-                googleStorageDownload bucketUri: 'gs://monplat-jenkins-artifacts/settings.xml', credentialsId: 'monplat-jenkins', localDirectory: './mvn/'
+                googleStorageDownload bucketUri: 'gs://monplat-jenkins-artifacts/settings.xml', credentialsId: 'monplat-jenkins', localDirectory: './.mvn/'
             }
             ansiColor('xterm') {
                 stage('Maven install') {
