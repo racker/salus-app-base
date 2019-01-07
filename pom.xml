@@ -116,28 +116,16 @@
             </container>
           </configuration>
         </plugin>
-
       </plugins>
     </pluginManagement>
-    <extensions>
-        <extension>
-            <groupId>com.gkatzioura.maven.cloud</groupId>
-            <artifactId>google-storage-wagon</artifactId>
-            <version>1.2</version>
-        </extension>
-    </extensions>
   </build>
 
-  <distributionManagement>
+<distributionManagement>
     <snapshotRepository>
-        <id>salus-snapshot-bucket</id>
-        <url>gs://monplat-jenkins-artifacts/snapshot</url>
+        <id>snapshots</id>
+        <name>artifactory-artifactory-0-snapshots</name>
+        <url>https://salus-artifactory.dev.monplat.rackspace.net/artifactory/libs-snapshot-local</url>
     </snapshotRepository>
-    <repository>
-      <id>bintray-racker-maven</id>
-      <name>racker-maven</name>
-      <url>https://api.bintray.com/maven/racker/maven/${project.artifactId}/;publish=1</url>
-    </repository>
-  </distributionManagement>
+</distributionManagement>
 
 </project>
