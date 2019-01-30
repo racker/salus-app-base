@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  ~    Copyright 2018 Rackspace US, Inc.
+  ~ Copyright 2019 Rackspace US, Inc.
   ~
-  ~    Licensed under the Apache License, Version 2.0 (the "License");
-  ~    you may not use this file except in compliance with the License.
-  ~    You may obtain a copy of the License at
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
   ~
-  ~        http://www.apache.org/licenses/LICENSE-2.0
+  ~     http://www.apache.org/licenses/LICENSE-2.0
   ~
-  ~    Unless required by applicable law or agreed to in writing, software
-  ~    distributed under the License is distributed on an "AS IS" BASIS,
-  ~    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~    See the License for the specific language governing permissions and
-  ~    limitations under the License.
-  ~
-  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
   -->
 
 <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -38,8 +36,13 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <java.version>1.8</java.version>
+
+    <!-- Specifies the prefix of the Docker image to tag.
+         In CI will be set with the registry designator to override this "local" prefix of "racker" -->
     <docker.image.prefix>racker</docker.image.prefix>
-    <skipLocalDockerBuild>false</skipLocalDockerBuild>
+    <!-- Specifies the image tag to apply in addition to the tag derived from the
+         application pom's project version  field -->
+    <docker.image.latest>latest</docker.image.latest>
   </properties>
 
   <repositories>
@@ -80,41 +83,10 @@
           <groupId>com.google.cloud.tools</groupId>
           <artifactId>jib-maven-plugin</artifactId>
           <version>0.9.13</version>
-          <executions>
-            <execution>
-              <id>build-local</id>
-              <phase>package</phase>
-              <goals>
-                <goal>dockerBuild</goal>
-              </goals>
-              <configuration>
-                <to>
-                  <image>${project.artifactId}</image>
-                  <tags>
-                    <tag>${project.version}</tag>
-                    <tag>latest</tag>
-                  </tags>
-                </to>
-                <skip>${skipLocalDockerBuild}</skip>
-              </configuration>
-            </execution>
-            <execution>
-              <id>tag-specific</id>
-              <phase>deploy</phase>
-              <goals>
-                <goal>build</goal>
-              </goals>
-              <configuration>
-                <to>
-                  <image>${docker.image.prefix}/${project.artifactId}</image>
-                  <tags>
-                    <tag>${project.version}</tag>
-                  </tags>
-                </to>
-              </configuration>
-            </execution>
-          </executions>
           <configuration>
+            <!-- The configuration located in there becomes the default for each application's
+                 image build; however, each is free to override any of this configuration such
+                 as when an alternate base image is needed. -->
             <from>
               <image>openjdk:8u181-jre-alpine</image>
             </from>
@@ -123,6 +95,13 @@
                 <port>8080</port>
               </ports>
             </container>
+            <to>
+              <image>${docker.image.prefix}/${project.artifactId}</image>
+              <tags>
+                <tag>${project.version}</tag>
+                <tag>${docker.image.latest}</tag>
+              </tags>
+            </to>
           </configuration>
         </plugin>
       </plugins>
