@@ -43,28 +43,19 @@ plugin specification:
 
 This app base module preconfigures the [jib maven plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin);
 however, each application needs to "activate" the plugin to enable Docker image building by 
-specifying the following. 
-
-> **NOTE** as you can see, the convention is to place the plugin within
-a `docker` profile block. This will ensure a "default" maven build will avoid the Docker
-build behavior and keep things simple. The profile can be activated by adding `-P docker` to
-the maven command-line.
+adding the following to the build>plugins section along with the `spring-boot-maven-plugin` 
+mentioned above. 
 
 ```xml
-<profiles>
-    <profile>
-        <id>docker</id>
-
-        <build>
-            <plugins>
-                <plugin>
-                    <groupId>com.google.cloud.tools</groupId>
-                    <artifactId>jib-maven-plugin</artifactId>
-                </plugin>
-            </plugins>
-        </build>
-    </profile>
-</profiles>
+<build>
+    <plugins>
+        <!-- spring-boot-maven-plugin plugin would be here too-->
+        <plugin>
+            <groupId>com.google.cloud.tools</groupId>
+            <artifactId>jib-maven-plugin</artifactId>
+        </plugin>
+    </plugins>
+</build>
 ```
 
 By default, the jib plugin is configured to use an OpenJDK JRE Alpine base image; however, the
@@ -107,8 +98,11 @@ More information about the configuration of [the run goal can be found here](htt
 
 ## Building local Docker images
 
-When the Maven profile "docker" is activated, the application module will produce
-a Docker image as part of the `package` goal.
+Along with the usual Maven goals add `jib:dockerBuild` to also include a Docker image build, such as
+
+```bash
+mvn package jib:dockerBuild
+```
 
 > **NOTE** this specific goal requires access to a Docker daemon, such as via Docker for Desktop
 or a mounted Docker socket.
@@ -130,19 +124,5 @@ In the application module, run the following replacing `$PROJECT_ID` with the Go
 Cloud project's ID, which is of the form of an identifer and number separated by a dash:
 
 ```
-mvn -P docker -Ddocker.image.prefix=gcr.io/myapp-12345 deploy
+mvn -Ddocker.image.prefix=gcr.io/myapp-12345 jib:dockerBuild
 ```
-
-If you would like to avoid pushing the Maven artifact during this build, then add
-
-```
--Dmaven.deploy.skip=true
-```
-
-If the local system doesn't have Docker installed, you can still perform the remote publish and
-skip the local Docker build by adding:
-
-```
--DskipLocalDockerBuild=true
-```
-
