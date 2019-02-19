@@ -146,6 +146,10 @@
       </snapshots>
       <url>http://salus-artifactory.dev.monplat.rackspace.net/artifactory/libs-release</url>
     </repository>
+    <repository>
+      <id>jitpack.io</id>
+      <url>https://jitpack.io</url>
+    </repository>
   </repositories>
 
 
