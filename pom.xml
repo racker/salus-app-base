@@ -108,6 +108,7 @@
               <tags>
                 <tag>${project.version}</tag>
                 <tag>${docker.image.latest}</tag>
+                <tag>${env.SHORT_SHA}</tag>
               </tags>
             </to>
           </configuration>
