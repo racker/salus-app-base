@@ -107,7 +107,7 @@
               <image>${docker.image.prefix}/${project.artifactId}</image>
               <tags>
                 <tag>${project.version}</tag>
-                <tag>latest</tag>
+                <tag>${docker.image.latest}</tag>
                 <tag>${env.SHORT_SHA}</tag>
               </tags>
             </to>
