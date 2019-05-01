@@ -118,11 +118,14 @@
   </build>
 
   <distributionManagement>
-      <snapshotRepository>
-          <id>snapshots</id>
-          <name>artifactory-artifactory-0-snapshots</name>
-          <url>https://salus-artifactory.dev.monplat.rackspace.net/artifactory/libs-snapshot-local</url>
-      </snapshotRepository>
+    <snapshotRepository>
+      <id>salus-dev-snapshots</id>
+      <url>https://salus-artifactory.dev.monplat.rackspace.net/artifactory/libs-snapshot-local</url>
+    </snapshotRepository>
+    <repository>
+      <id>salus-dev-release</id>
+      <url>https://salus-artifactory.dev.monplat.rackspace.net/artifactory/libs-release-local</url>
+    </repository>
   </distributionManagement>
 
   <repositories>
@@ -130,28 +133,28 @@
       <snapshots>
         <enabled>false</enabled>
       </snapshots>
-      <id>jcenter</id>
-      <url>https://jcenter.bintray.com</url>
-    </repository>
-    <repository>
-      <id>salus-dev-snapshots</id>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-      <url>http://salus-artifactory.dev.monplat.rackspace.net/artifactory/libs-snapshot</url>
-    </repository>
-    <repository>
       <id>salus-dev-release</id>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
       <url>http://salus-artifactory.dev.monplat.rackspace.net/artifactory/libs-release</url>
     </repository>
     <repository>
-      <id>jitpack.io</id>
-      <url>https://jitpack.io</url>
+      <snapshots />
+      <id>salus-dev-snapshots</id>
+      <url>http://salus-artifactory.dev.monplat.rackspace.net/artifactory/libs-snapshot</url>
     </repository>
   </repositories>
-
+  <pluginRepositories>
+    <pluginRepository>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <id>salus-dev-release</id>
+      <url>http://salus-artifactory.dev.monplat.rackspace.net/artifactory/libs-release</url>
+    </pluginRepository>
+    <pluginRepository>
+      <snapshots />
+      <id>salus-dev-snapshots</id>
+      <url>http://salus-artifactory.dev.monplat.rackspace.net/artifactory/libs-snapshot</url>
+    </pluginRepository>
+  </pluginRepositories>
 
 </project>
