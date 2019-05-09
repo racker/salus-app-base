@@ -35,7 +35,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <java.version>1.8</java.version>
+    <java.version>12</java.version>
 
     <!-- Specifies the prefix of the Docker image to tag.
          In CI will be set with the registry designator to override this "local" prefix of "racker" -->
