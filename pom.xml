@@ -35,7 +35,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <java.version>1.8</java.version>
+    <java.version>11</java.version>
 
     <!-- Specifies the prefix of the Docker image to tag.
          In CI will be set with the registry designator to override this "local" prefix of "racker" -->
@@ -102,7 +102,7 @@
                  image build; however, each is free to override any of this configuration such
                  as when an alternate base image is needed. -->
             <from>
-              <image>openjdk:8u181-jre-alpine</image>
+              <image>openjdk:11.0.3-slim</image>
             </from>
             <container>
               <ports>
