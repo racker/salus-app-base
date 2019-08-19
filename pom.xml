@@ -36,6 +36,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <java.version>11</java.version>
+    <fluency.version>2.3.3</fluency.version>
 
     <!-- Specifies the prefix of the Docker image to tag.
          In CI will be set with the registry designator to override this "local" prefix of "racker" -->
@@ -65,7 +66,21 @@
         <artifactId>guava</artifactId>
         <version>27.0.1-jre</version>
       </dependency>
-
+      <dependency>
+        <groupId>com.sndyuk</groupId>
+        <artifactId>logback-more-appenders</artifactId>
+        <version>1.5.6</version>
+      </dependency>
+      <dependency>
+        <groupId>org.komamitsu</groupId>
+        <artifactId>fluency-core</artifactId>
+        <version>${fluency.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.komamitsu</groupId>
+        <artifactId>fluency-fluentd</artifactId>
+        <version>${fluency.version}</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 
