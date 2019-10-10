@@ -37,6 +37,7 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <java.version>11</java.version>
     <fluency.version>2.3.3</fluency.version>
+    <spring-cloud.version>Greenwich.SR3</spring-cloud.version>
 
     <!-- Specifies the prefix of the Docker image to tag.
          In CI will be set with the registry designator to override this "local" prefix of "racker" -->
@@ -52,13 +53,11 @@
     <dependencies>
 
       <dependency>
-        <!-- Spring Boot doesn't yet bundle support for actuator metrics via Stackdriver, so this
-         autoconfig module fills that gap for now.
-         Refer to https://github.com/itzg/stackdriver-spring-boot-autoconfigure for info about
-          how to configure this -->
-        <groupId>com.github.itzg</groupId>
-        <artifactId>stackdriver-spring-boot-autoconfigure</artifactId>
-        <version>1.1.0</version>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>${spring-cloud.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
       </dependency>
 
       <dependency>
