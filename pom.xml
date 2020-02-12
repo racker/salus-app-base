@@ -125,7 +125,7 @@
           <!-- plugin docs located at https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin -->
           <groupId>com.google.cloud.tools</groupId>
           <artifactId>jib-maven-plugin</artifactId>
-          <version>0.9.13</version>
+          <version>2.0.0</version>
           <configuration>
             <!-- The configuration located in there becomes the default for each application's
                  image build; however, each is free to override any of this configuration such
@@ -134,6 +134,8 @@
               <image>openjdk:11.0.3-slim</image>
             </from>
             <container>
+              <!-- Avoid using the default, EPOCH, since that complicates pruning of images in the registry -->
+              <creationTime>USE_CURRENT_TIMESTAMP</creationTime>
               <ports>
                 <port>8080</port>
               </ports>
