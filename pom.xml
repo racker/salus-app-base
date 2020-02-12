@@ -131,7 +131,7 @@
                  image build; however, each is free to override any of this configuration such
                  as when an alternate base image is needed. -->
             <from>
-              <image>openjdk:11.0.3-slim</image>
+              <image>openjdk:11.0.6-slim</image>
             </from>
             <container>
               <!-- Avoid using the default, EPOCH, since that complicates pruning of images in the registry -->
