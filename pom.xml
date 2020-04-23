@@ -140,18 +140,47 @@
               </ports>
             </container>
             <to>
-              <image>${docker.image.prefix}/${project.artifactId}</image>
-              <tags>
-                <tag>${project.version}</tag>
-                <tag>${docker.image.latest}</tag>
-                <tag>${env.SHORT_SHA}</tag>
-              </tags>
+              <!-- ensure dev builds only produce a tagged image and always prefix that tag -->
+              <image>${docker.image.prefix}/${project.artifactId}:dev-${docker.image.latest}</image>
             </to>
           </configuration>
         </plugin>
       </plugins>
     </pluginManagement>
   </build>
+
+  <profiles>
+    <profile>
+      <!--
+      For cloud builds, which are activated by SHORT_SHA env var, build with all of the tags
+      including the implicit "latest" tag.
+       -->
+      <id>cloud-build</id>
+      <activation>
+        <property><name>env.SHORT_SHA</name></property>
+      </activation>
+      <build>
+        <pluginManagement>
+          <plugins>
+            <plugin>
+              <groupId>com.google.cloud.tools</groupId>
+              <artifactId>jib-maven-plugin</artifactId>
+              <configuration>
+                <to>
+                  <image>${docker.image.prefix}/${project.artifactId}</image>
+                  <tags>
+                    <tag>${project.version}</tag>
+                    <tag>${docker.image.latest}</tag>
+                    <tag>${env.SHORT_SHA}</tag>
+                  </tags>
+                </to>
+              </configuration>
+            </plugin>
+          </plugins>
+        </pluginManagement>
+      </build>
+    </profile>
+  </profiles>
 
   <distributionManagement>
     <snapshotRepository>
