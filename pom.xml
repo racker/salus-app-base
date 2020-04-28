@@ -36,7 +36,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <java.version>11</java.version>
-    <fluency.version>2.3.3</fluency.version>
+    <fluency.version>2.4.1</fluency.version>
     <spring-cloud.version>Greenwich.SR3</spring-cloud.version>
 
     <!-- Specifies the prefix of the Docker image to tag.
