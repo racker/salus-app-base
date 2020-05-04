@@ -167,10 +167,9 @@
               <artifactId>jib-maven-plugin</artifactId>
               <configuration>
                 <to>
-                  <image>${docker.image.prefix}/${project.artifactId}</image>
+                  <image>${docker.image.prefix}/${project.artifactId}:${docker.image.latest}</image>
                   <tags>
                     <tag>${project.version}</tag>
-                    <tag>${docker.image.latest}</tag>
                     <tag>${env.SHORT_SHA}</tag>
                   </tags>
                 </to>
