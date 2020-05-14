@@ -44,7 +44,7 @@
     <docker.image.prefix>racker</docker.image.prefix>
     <!-- Specifies the image tag to apply in addition to the tag derived from the
          application pom's project version  field -->
-    <docker.image.latest>latest</docker.image.latest>
+    <docker.image.latest>dev</docker.image.latest>
   </properties>
 
   <dependencyManagement>
