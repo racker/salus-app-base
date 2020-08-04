@@ -45,6 +45,7 @@
     <!-- Specifies the image tag to apply in addition to the tag derived from the
          application pom's project version  field -->
     <docker.image.latest>dev</docker.image.latest>
+    <docker.image.dev-qualifier>${user.name}</docker.image.dev-qualifier>
   </properties>
 
   <dependencyManagement>
@@ -141,7 +142,7 @@
             </container>
             <to>
               <!-- ensure dev builds only produce a tagged image and always prefix that tag -->
-              <image>${docker.image.prefix}/${project.artifactId}:dev-${docker.image.latest}</image>
+              <image>${docker.image.prefix}/${project.artifactId}:dev-${docker.image.dev-qualifier}</image>
             </to>
           </configuration>
         </plugin>
