@@ -125,7 +125,7 @@
           <!-- plugin docs located at https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin -->
           <groupId>com.google.cloud.tools</groupId>
           <artifactId>jib-maven-plugin</artifactId>
-          <version>2.0.0</version>
+          <version>2.5.2</version>
           <configuration>
             <!-- The configuration located in there becomes the default for each application's
                  image build; however, each is free to override any of this configuration such
