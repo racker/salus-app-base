@@ -37,7 +37,7 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <java.version>11</java.version>
     <fluency.version>2.4.1</fluency.version>
-    <spring-cloud.version>Greenwich.SR3</spring-cloud.version>
+    <spring-cloud.version>Hoxton.SR7</spring-cloud.version>
 
     <!-- Specifies the prefix of the Docker image to tag.
          In CI will be set with the registry designator to override this "local" prefix of "racker" -->
